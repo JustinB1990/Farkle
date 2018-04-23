@@ -56,3 +56,40 @@ This project will simulate playing a game of Farkle.
 
 ### Designing the Game
 
+**Initial thoughts on how to design Farkle:**
+
+Similar to that of the HangMan game, I'm going to create a class **Game** that will keep track of our user's *Total Score* and *Turn Score*. It will also contain methods such as *Taking a single turn* and *determining if the user has reached 10,000 points*.
+
+In addition to class **Game** I think we should have classes for:
+
+**Dice** - Which will allow us to create Dice objects. We will have a method that assigns a Dice Object an integer value between 1 and 6.
+
+**Hand** - Which will allow us to create an ArrayList that contains our Dice objects. It will have methods to add and remove Dice Objects from the ArrayList, effectively acting as our user's hand as they roll the dice. It will also have methods that will re-randomize the Dice Object's values in the array and a method that will display what those values are.
+
+I haven't decided if **Scoreboard** will be a Class as well or if I will just include the methods in our **Game** class,
+but we need methods that will take in our ArrayList of Dice Objects and check to see if our user rolled any special combos.
+
+So to begin with:
+
+**Step 1:** Create a class for Dice. Give it a method that randomizes it's value to an integer between 1 and 6. [ *test code* ]
+
+**Step 2:** Create a class for Hand that holds an ArrayList containing object type Dice.
+ * Give it a method to show/print the values of each Dice object in the ArrayList. [ *test code*  ]
+ * Give it a method to add a number of Dice objects to the ArrayList. [ *test code* ]
+ * Give it a method to remove a number of Dice objects from the ArrayList. [ *test code* ]
+ * Give it a method to randomize all values of the Dice objects in the ArrayList. [ *test code* ]
+ 
+ At this point we will have:
+ * The Dice our user will roll.
+ * The ability to have our user begin a new hand with 6 dice.
+ * The ability to have our user roll the dice and remove dice they should no longer roll.
+ 
+ **Step 3:** Next, we should create a method that checks for 1's and 5's being *rolled* - and see if our program recognizes when this occurs. [ *test code* ]
+ 
+ If this does work. I think I will push creating the rest of the check methods(like seeing if our user rolled a *4 of a kind*) to the end.
+ 
+ **Step 4:** I think the next task is to allow our user to interact with the game. The next step is to work Scanner into the program: Ask our user if they want to take a 1 or a 5. If they say Yes, remove that Dice Object from the hand. If they say No, leave it. [ *test code*]
+ 
+ *I think this is a good place stop. I'll come back to this once I complete **Step 2***.
+ 
+ 
