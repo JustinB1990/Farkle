@@ -117,5 +117,21 @@ wants to keep rolling and hasn't Farkled.
 
 *From here, we have a very basic version of the game we are trying to create - that will allow our user to take turns until they reach 10,000 points. The user will only be able to score points from 1's and 5's. I am going to begin with steps 1 and 2, test them and return to review.*
 
+---
+### Progress Report 4/25/2018
+
+I have now created a class for Dice and Hand. I've added the four methods listed above to hand, and I have also added two 'getter' methods for values I found I needed for other methods I have created.
+
+I have also now developed my class `Game` to have points to keep track of my user's score and methods to check the `hand` for 1's and 5's. I've added a method that asks the user if they want to take dice from the `hand` for points - and if so, it will remove the appropriate amount of dice from the `hand`.
+
+I'm currently creating the a method that will act as my user's turn. In order to know if the user wants to continue rolling dice for that turn, I have created a method that will ask the user and return a boolean.
+
+I intend to build on this tomorrow.
+New update coming soon.
+
+---
+
+---
+
  
  
