@@ -44,9 +44,16 @@ public class Hand {
 
     }
 
+    int getHandSize(){
 
+        return diceCount;
 
+    }
 
+    int getDiceValue(int i){
 
+        return hand[i].value;
+
+    }
 
 }
