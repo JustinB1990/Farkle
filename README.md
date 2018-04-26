@@ -56,3 +56,66 @@ This project will simulate playing a game of Farkle.
 
 ### Designing the Game
 
+I'm going to begin by designing this game for a single player who will play through a single game of Farkle on their own,
+taking turns until they reach 10,000 points. *Then* I will think about adding in a computer for the player to play against.
+
+**What does a game of Farkle look like:**
+
+A player will take turns until they reach 10,000 points. This means there will be a loop that repeats the actions within a Turn that breaks upon the user reaching 10,000 Total Points.
+
+*What happens during a turn:*
+
+A player begins with 6 Dice. They roll the dice over and over until they choose to stop or until they Farkle. 
+So a single turn will be a loop of randomizing Dice and allowing our user to select Dice to score points.
+The loop breaks when the user chooses to stop or when the user Farkles.
+
+In that loop, the user has to choose dice to take and not take(conditionals - if/else)
+and after choosing the dice to score, they need to decide if they want to continue rolling(if/else where the outcome can break the loop.)
+
+**Initial thoughts on how to design Farkle:**
+
+Similar to my Movie Hangman program, I will have a Class for `Game` that holds the user's `totalScore`, `turnScore`, and `rollScore`.
+It will also probably have booleans `farkled` and `continueRoll` that will be used as the conditions for the loop I will use to allow the user to roll as many times as they choose(or until they farkle) in a single turn.
+
+Which brings me to the first method in my `Game` class: `Turn`, which holds all of the actions that will take place in a single turn.
+I will need a boolean to keep track of whether or not the user took dice for a single roll in a turn.
+
+I will also have a class for `Dice` which will allow me to create Dice Objects. They will have a field `value` that contains a random integer value between 1 and 6. This random integer will be gained from a method within the class that uses `Math.random()`.
+
+Next, I need a way to hold and organize the dice. Class `Hand` will be an Array that will hold the Dice Objects.
+I will create methods that will:
+* Fill the user's hand with 6 Dice Objects. `newHand`
+* Allows me to remove a Dice Object from the Array. `removeDice`
+* Allows me to randomize all values of the Dice Objects in the array(effectively rolling a hand of dice.) `rollHand`
+* Allows me to display the values of each Dice Object to the user so they know what they rolled. `showHand`
+
+Finally, I need a way to check our hand for 1's, 5's, and the various combo rolls a user can make.
+I can make these methods in my `Game` class.
+
+**To start out with:**
+In order to do anything at all, I need Dice to work with and a way to organize them.
+
+1. Create a class for `Dice`. Give it a method that allows me to randomize each individual Dice Object's value to an integer between 1 and 6.
+2. Create a class for `Hand`. This will be a Dice Array. Create methods: `newHand`, `removeDice`, `rollHand`, `showHand`.
+
+***After this point, it will be more difficult to organize what to program next as I will be digging into actual gameplay. So I will stop at this point to review progress. But I will still list out the next steps I can forsee taking:***
+
+3. Create a method in `Game` that checks the `hand` for 1's and 5's. - Have the method tell the user how many of each there are.
+*The other check methods can be implemented at the end. So until then, I am creating a Farkle game in which the only way to score points is through 1's and 5's.*
+
+4. Create the `Turn` method in `Game`. It will use a boolean `keepRolling` and `farkled` as Loop Conditions to make sure the user
+wants to keep rolling and hasn't Farkled.
+
+**Inside of that loop:**
+  1. The player needs to `rollHand`.
+  2. I need to check if the player rolled anything that would score them points.
+      * If they didn't then they Farkled and I need to adjust `farkled` to true and exit the loop.
+      * If they did, then I need to enter a new loop that's condition is based on a boolean `diceTaken`, which makes sure the user takes **at least** one Dice that would score them points(which I will store in `rollScore`). Inside this loop, I need to ask the user which Dice they want to take and score. as long as `diceTaken` is true, the user can exit the loop(in which case, I will add `rollscore` to `turnScore`.)
+       * After exiting the loop, I need to ask if the user wants to keep rolling, or if they want to end their turn.
+          * If they want to keep rolling, then they stay in the loop for `Turn` and the loop will restart.
+          * If they don't want to keep rolling, then I add `turnScore` to `totalScore`, I check if their `totalScore` has reached 10,000 points, and if it hasn't, I shoot them back into `Turn` to keep playing.
+
+*From here, we have a very basic version of the game we are trying to create - that will allow our user to take turns until they reach 10,000 points. The user will only be able to score points from 1's and 5's. I am going to begin with steps 1 and 2, test them and return to review.*
+
+ 
+ 
