@@ -14,7 +14,10 @@ public class Main {
         hand.fillHand(diceOne, diceTwo, diceThree, diceFour, diceFive, diceSix);
         hand.rollHand();
         hand.showHand();
-        hand.removeDice();
+
+        Game game = new Game();
+        game.checkOnesAndFives(hand);
+
         hand.showHand();
 
 
