@@ -131,6 +131,21 @@ New update coming soon.
 
 ---
 
+### Update 4/26/2018
+
+I've updated class `Hand` to create the `Dice` objects I will use instead of making everything in `main` - making it cleaner.
+I also added a sort method in `Hand` as well.
+
+I created the `takeTurn()` method in `Game` and changed some of the programs outputs to make it more appealing to the eye.
+
+***Next***
+* I'm going to create the methods that checks if the user rolled any of the combos.
+* Then I will create a method that checks if the user farkled - which will use the other check methods to do so.
+* After completing all of those check methods, I can implement them into `takeTurn()`. At that point, the `takeTurn()` method will be able to check for everything a user can score and allow them to score points appropriately for what they roll.
+* Then I will create a loop in the `Game` constructor that will loop `takeTurn()` until the player's `totalPoints` reaches 10,000.
+
+---
+
 ---
 
  
