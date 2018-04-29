@@ -145,6 +145,24 @@ I created the `takeTurn()` method in `Game` and changed some of the programs out
 * Then I will create a loop in the `Game` constructor that will loop `takeTurn()` until the player's `totalPoints` reaches 10,000.
 
 ---
+### Update 4/28/2018
+
+After reviewing options on how to check all of the different outcomes, I decided I am going to create a HashMap that will only ever contain dice that can be used to score points.
+
+Steps to creating the HashMap:
+1. Create an Integer Array containing all of the values of dice the user rolls.
+2. Create an Integer Array containing possible outcomes the user can roll: [1, 2, 3, 4, 5, 6]
+3. Create a 2D Integer Array(`results`), where each Array in `results` will contain 2 integers.
+    * The first integer will be the dice value the user rolled.
+    * The second integer will be the number of dice that rolled that value.
+    * If say, the user didn't roll any 2's, then `results` will not contain an Array where the first value of that array is 2.
+  
+4. Create conditions over the 2D Array that will add a new key to the HashMap, where the key would be the Dice Value rolled, and the key's value would be the number of dice that rolled that value. **Creating the HashMap to only contain dice that *can* score points**
+
+I believe this will make it easier for me to perform the checks I need each time a player rolls the dice.
+Then I can remove dice from `hand` without worrying about it effecting the process of scoring points as it is happening.
+
+---
 
 ---
 
