@@ -163,6 +163,35 @@ I believe this will make it easier for me to perform the checks I need each time
 Then I can remove dice from `hand` without worrying about it effecting the process of scoring points as it is happening.
 
 ---
+### Update 4/29/2018
+
+I began creating the HashMap.
+I ran into a few problems as I started everything as an Array which has an immutable number of slots.
+I figured it would be easier to just use an ArrayList or List, but I wanted to figure out the algorithms needed to overwrite my existing Arrays instead. I also created a sort method that sorts `results` for highest quantity of dice value rolled to least.
+
+At the moment, my multi-dimensional array `results` works and functions exactly as I want it to.
+There are some errors in the code to append keys and their values to the HashMap, which I should be able to figure out pretty quickly.
+
+After correcting those errors, I will have to test out the code to make sure that all of the following would be appended to the HashMap:
+
+  * A Straight: 1-2-3-4-5-6.
+  * 3 of a kind/ 4 of a kind/ 5 of a kind/ 6 of a kind (with and without lonely 1's and 5's with them.)
+  * 4 of a kind with a pair.
+  * 3 pairs.
+  * 2 Triples.
+  * Some combinations of 1's and 5's without any additional combo rolls.
+  
+The code to append all of these items onto the HashMap is fairly short and uses a couple of if/else conditions and for loops.
+  
+Upon having a functional HashMap that takes in all of the above,
+  
+  1. I will need to create the checks that take the hashMap in and returns true/false.
+  2. Create the code in `takeTurn` that performs all of those checks.
+  3. Create the code asking the user to take or reject points.
+  
+More updates to come soon!
+  
+  ---
 
 ---
 
