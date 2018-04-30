@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Game {
@@ -19,7 +20,7 @@ public class Game {
         boolean continueRolling = true;
         boolean farkled = false;
         Hand hand = new Hand();
-
+/* commenting out this block to test if the HashMap works appropriately.
         while(continueRolling && !farkled){
             boolean tookDice = false;
             System.out.println("Rolling Dice...");
@@ -45,7 +46,13 @@ public class Game {
                 turnPoints = 0;
             }
 
-        }
+        } */
+
+        hand.rollHand();
+        hand.showHand();
+        HashMap newHash = HashMapCreator.createHashMap(hand);
+        System.out.println(newHash);
+
 
     }
 
