@@ -54,52 +54,55 @@ public class HashMapCreator {
                 loopCounter++;
             }
         }
-        //TEST CODE TO SEE RESULTS
-        for(int i=0; i<results.length;i++){
-            System.out.println(results[i][0]+","+results[i][1]);
-        }
-        System.out.println("\n");
-        //END TEST CODE
 
         results = orderMultiDimArray(results);
 
-        //TEST CODE TO SEE RESULTS
-        for(int i=0; i<results.length;i++){
-            System.out.println(results[i][0]+","+results[i][1]);
-        }
-        //END TEST CODE
-
-        //The Following Code DOESN'T Work As Intended At The Moment:
-        //This if statement will recognize and add a straight into the HashMap.
+        // check for a straight
         if(results.length == 6){
-            for(int i = 0; i<5; i++){
-                    scorableDice.put(results[i][0], results[i][1]);
-            }
-        //this if statement will recognize and add a Four of a kind w/ a pair into the HashMap.
-        } else if(results.length == 2){
-            if(results[0][1] == 4 && results[1][1] == 2){
-                for(int i = 0; i < 1; i++){
-                    scorableDice.put(results[i][0], results[i][1]);
-                }
-            }
-        //this if statement will recognize and add three pairs into the HashMap
-        } else if(results.length == 3){
-            if((results[0][1]==2) && (results[1][1]==2) && (results[2][1]==2)){
-                for(int i = 0; i < 2; i++){
-                    scorableDice.put(results[i][0], results[i][1]);
-                }
-            }
-        //all other results that can be added into the HashMap will be a dice that was rolled as a 1 or a 5, or if we rolled 3, 4, 5, or 6 of a kind.
-        } else{
             for(int i = 0; i < results.length; i++){
-                if(results[i][1] >= 3){
-                    scorableDice.put(results[i][0], results[i][1]);
-                } else if(results[i][0] == 1 || results[i][0] == 5){
-                    scorableDice.put(results[i][0], results[i][1]);
+                scorableDice.put(results[i][0], results[i][1]);
+            }
+        }
+        // check for 3 pairs
+        if(scorableDice.size() == 0){
+            if(results.length == 3){
+                if((results[0][1] == 2) && (results[1][1] == 2) && (results[2][1] ==2)){
+                    scorableDice.put(results[0][0], results[0][1]);
+                    scorableDice.put(results[1][0], results[1][1]);
+                    scorableDice.put(results[2][0], results[2][1]);
                 }
             }
         }
-        //This above code to Append items to the HashMap needs to be edited.
+        // check for 4 of a kind with a pair
+        if(scorableDice.size() == 0){
+            if(results.length == 2){
+                if((results[0][1] == 4) && (results[1][1] == 2)){
+                    scorableDice.put(results[0][0], results[0][1]);
+                    scorableDice.put(results[1][0], results[1][1]);
+                }
+            }
+        }
+        // check for 3 of a kind and greater(excluding 1's and 5's, then check for 1's and 5's
+        if(scorableDice.size() == 0){
+
+            for(int i = 0; i < results.length; i++){
+                if((results[i][0] != 1) && (results[i][0] != 5)){
+                    if(results[i][1] > 2){
+                        scorableDice.put(results[i][0], results[i][1]);
+                    }
+                }
+            }
+
+            for(int i = 0; i < results.length; i++){
+                if(results[i][0] == 1){
+                    scorableDice.put(results[i][0], results[i][1]);
+                }
+                if(results[i][0] == 5){
+                    scorableDice.put(results[i][0], results[i][1]);
+                }
+            }
+
+        }
 
         return scorableDice;
 
@@ -130,6 +133,8 @@ public class HashMapCreator {
         return multiDimArray;
 
     }
+
+
 
 
 }
