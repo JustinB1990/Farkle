@@ -191,7 +191,15 @@ Upon having a functional HashMap that takes in all of the above,
   
 More updates to come soon!
   
-  ---
+---
+### Update 4/30/2018
+
+The HashMapCreator has now been completed.
+I've tested it to make sure it takes in all possible combo rolls.
+
+Now I need to create the methods that checks the HashMap for what combo was rolled and return true/false accordingly.
+Implement that code into `takeTurn` and test it to make sure they all return the correct boolean when the roll is made.
+Then implement the options for the user to take or reject those rolls.
 
 ---
 
