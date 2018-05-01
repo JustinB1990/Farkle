@@ -47,7 +47,7 @@ This project will simulate playing a game of Farkle.
     The opponent rolls: 1 1 5 3 3 2.<br>
     The opponent takes both 1's - running score is 200 points.<br>
     The opponent now rolls 4 Dice: 1 2 4 6.<br>
-    The opponent must take the 1 - runninf score now 300 points.<br>
+    The opponent must take the 1 - running score is now 300 points.<br>
     The opponent rolls 3 Dice: 2 2 3.<br>
     The opponent Farkled. They lose the 300 points they had. Their Total score of 3150 remains unchanged and it is now 'the Player's turn.
     </details>
