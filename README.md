@@ -202,6 +202,12 @@ Implement that code into `takeTurn` and test it to make sure they all return the
 Then implement the options for the user to take or reject those rolls.
 
 ---
+### Update 5/9/2018
+
+After reviewing the different ways in manipulating and using a HashMap, I decided that it is much easier to access an ArrayList. So I've recoded the the HashMapCreator to create an ArrayList instead.
+
+---
+
 
  
  
