@@ -1,6 +1,7 @@
 package com.company;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Game {
@@ -50,8 +51,11 @@ public class Game {
 
         hand.rollHand();
         hand.showHand();
-        HashMap newHash = HashMapCreator.createHashMap(hand);
-        System.out.println(newHash);
+        ArrayList<int[]> newArrayList = ScorableDiceCreator.createArrayList(hand);
+
+        for(int i = 0; i < newArrayList.size(); i++){
+            System.out.println(Arrays.toString(newArrayList.get(i)));
+        }
 
 
     }
