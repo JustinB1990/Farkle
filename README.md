@@ -207,6 +207,127 @@ Then implement the options for the user to take or reject those rolls.
 After reviewing the different ways in manipulating and using a HashMap, I decided that it is much easier to access an ArrayList. So I've recoded the the HashMapCreator to create an ArrayList instead.
 
 ---
+### Update 5/13/2018: Putting together takeTurn()
+
+I've completed the checks for the different roll combos a player can make.
+Each one takes in an `ArrayList<int[]>` and returns a **boolean** that can be used.
+So, `Hand.java` now has methods(not yet uploaded to git):
+
+`checkEmptyHand` that will return a boolean based on whether or not the `scorableDice` ArrayList is empty.
+
+along with methods:
+
+`checkStraight`, `checkThreePairs`, `checkTwoTriples`, `checkFourKindWithPair`, `checkSixKind`, `checkFiveKind`, `checkFourKind`, `checkThreeKind`.
+
+I began writing out Pseudo-code for the `takeTurn()` method which leads me to believe I will need to write out 3 other methods which will be listed as **(a)**, **(b)**, and **(c)** in the block of Pseudo-code below.
+
+
+**Pseudo-Code for takeTurn():**
+~~~~
+takeTurn(){
+    run boolean checks for straight, threePair, twoTriples, fourKindWithPair, and sixKind.
+    if(straight){
+  
+        *The code in this if statement should be made as a method (a).*
+        tell the user they rolled a straight.
+        Award the user turnPoints
+        tookDice = true (allows the user to end the turn after this roll.)
+        continueRolling = continueTurn() (allows the user to choose to end their turn or continue rolling.)
+        if(!continueRolling){
+              add turnPoints to totalPoints.
+              tell the user they will be beginning a new turn.
+              }
+        *end of code for method (a)*  
+        
+    } else if(threePair){
+    
+        run (a) but change the wording a points awarded appropriately.
+      
+    } else if(twoTriples){
+    
+        run (a) but change the wording a points awarded appropriately.
+      
+    } else if(fourKindWithPair){
+    
+        run (a) but change the wording a points awarded appropriately.
+      
+    } else if(sixKind){
+    
+        run (a) but change the wording a points awarded appropriately.
+      
+    } else{
+    
+        run boolean checks for fiveKind, fourKind, and threeKind.
+        if(fiveKind){
+            
+            *The code in this if statement should be made as a method (b).*
+            ask if the user wants to take the five of a kind.
+            if(take){
+                  add points to turnPoints.
+                  tookDice = true;
+                  scorableDice.remove(0);
+                  run hand.removeDice() five times.;
+                  }
+            *end of code for method (b)*     
+                  
+            } else if(fourKind){
+    
+                run (b) but change the wording a points awarded appropriately.
+                
+            } else if(threeKind){
+            
+                run (b) but change the wording a points awarded appropriately.
+                
+            )
+            
+        if(scorableDice.size() > 0){
+            
+            At this point, if the ArrayList isn't empty, then all that remains 
+            in it that is scorable are some amount of 1's and/or 5's.
+            
+            So I will need to write out code that will go through the ArrayList 
+            one array at a time asking if the user wants to take the 1 or 5. I will 
+            change that Array's second value by subtracting 1 from it in order to 
+            keep track of each item I verify with the user. If the user wants to 
+            take the item, then I will use the removeDice() method in Hand().
+            
+            for example: if the first array in the ArrayList is [1. 2] I would change 
+            the array to be [1, 1]. Then I would ask if the user wants to take a 1. 
+            If yes, I would user hand.removeDice(). Then I would repeat this process
+            another time changing the array to [1, 0].
+            
+            then if the value is 0, then I will use .remove() to remove the item 
+            completely from the ArrayList, and then ask if the user wants to take 5's
+            if there is an array in the ArrayList for 5's.
+            
+            as long as the user took atleast 1 dice, set tookDice = true
+            
+            *This entire process will be made into a method as well: method (c)*
+            
+            }
+            
+        Now I need to check if the user used all dice in their hand. 
+        If so, they need to be given a new set of six dice.
+        
+        if(hand.getHandSize() == 0){
+        
+            hand.fillHand();
+            
+            }
+            
+        ask the user if they want to keep rolling.
+        
+        if(!continueRolling){
+          add turnPoints to totalPoints
+          }
+          
+      ) *This is the end of the final else statement from above*
+      
+  } *This is the end of takeTurn()*
+        
+~~~~
+ 
+
 
 
  
