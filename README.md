@@ -327,8 +327,20 @@ takeTurn(){
         
 ~~~~
  
+ ---
+ ### Update 5/15/2018
+ 
+ After writing out some code for the three methods listed above: (a), (b), (c)
+ I found that making those method seemed fairly irrelevent.
+ 
+ I've updated the code.
+ 
+ It builds properly, but there are still a few errors in the logic for the while loops.
+ I'll have to come back to this tomorrow to fix them.
+ 
+ At the moment, upon fixing the looping errors, the `takeTurn()` method will be complete and all I'll have left to do is put a loop in the `main()` method to repeat `takeTurn()` until the user's totalPoints surpasses 10,000.
 
-
+More updates coming soon...
 
  
  
