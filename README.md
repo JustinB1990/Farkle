@@ -342,5 +342,17 @@ takeTurn(){
 
 More updates coming soon...
 
- 
+---
+### Update 5/17/2018
+
+I've figured out the errors in the loops. I've also cleaned up certain parts of the code.
+
+**Next:**
+* I want to clean up some of the wording that prints out to the user.
+* I need to test every individual outcome that a user can roll. Rejecting all/some dice, and taking all dice to make sure everything works and functions properly.
+* I also still need to add a loop that makes sure that the user scores at least 500 points in order to get onto the scoreboard in the first place.
+
+I'll push and update the code on Git tomorrow(5/18)
+
+---
  
