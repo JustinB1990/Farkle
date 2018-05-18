@@ -6,13 +6,16 @@ import java.util.Scanner;
 
 public class Game {
 
-    private int handPoints;
     private int turnPoints;
     private int totalPoints;
+    private int turnCounter;
+    private int farkleCounter;
 
     public Game(){
         this.turnPoints = 0;
         this.totalPoints = 0;
+        this.turnCounter = 0;
+        this.farkleCounter = 1;
     }
 
     public void takeTurn() throws InterruptedException {
@@ -21,6 +24,7 @@ public class Game {
         boolean farkled = false;
         Hand hand = new Hand();
         turnPoints = 0;
+        turnCounter++;
 
         while(continueRolling && !farkled){
             boolean tookDice = false;
@@ -28,60 +32,54 @@ public class Game {
             Thread.sleep(1000);
             hand.rollHand();
             hand.showHand();
+            hand.sortHand(hand);
             ArrayList<int[]> scorableDice = ScorableDiceCreator.createArrayList(hand);
             farkled = hand.checkEmptyHand(scorableDice);
             if(!farkled){
+
+                boolean straight = hand.checkStraight(scorableDice);
+                boolean threePair = hand.checkThreePair(scorableDice);
+                boolean twoTriples = hand.checkTwoTriples(scorableDice);
+                boolean sixKind = hand.checkSixKind(scorableDice);
+                boolean fourKindWithPair = hand.checkFourKindWithPair(scorableDice);
+
                 while(!tookDice){
 
-                    boolean straight = hand.checkStraight(scorableDice);
-                    boolean threePair = hand.checkThreePair(scorableDice);
-                    boolean twoTriples = hand.checkTwoTriples(scorableDice);
-                    boolean sixKind = hand.checkSixKind(scorableDice);
-
                     if(straight){
-                        System.out.println("You rolled a STRAIGHT! \n You've been awarded 1500 points! \n You've been given a new set of six dice to continue rolling for this turn.");
+
+                        System.out.println("You rolled a STRAIGHT!\nYou've been awarded 1500 points!");
                         turnPoints += 1500;
                         tookDice = true;
-                        continueRolling = continueTurn();
-                        if(!continueRolling){
-                            totalPoints += turnPoints;
-                            System.out.println("Points earned this turn: " + turnPoints + ".\nTotal Points: " + totalPoints + ".\nEnding turn...");
-                            Thread.sleep(1000);
-                            break;
-                        }
+                        scorableDice.clear();
+
                     } else if(threePair){
-                        System.out.println("You rolled THREE PAIR! \n You've been awarded 1500 points! \n You've been given a new set of six dice to continue rolling for this turn.");
+
+                        System.out.println("You rolled THREE PAIR!\nYou've been awarded 1500 points!");
                         turnPoints += 1500;
                         tookDice = true;
-                        continueRolling = continueTurn();
-                        if(!continueRolling){
-                            totalPoints += turnPoints;
-                            System.out.println("Points earned this turn: " + turnPoints + ".\nTotal Points: " + totalPoints + ".\nEnding turn...");
-                            Thread.sleep(1000);
-                            break;
-                        }
+                        scorableDice.clear();
+
                     } else if(twoTriples){
-                        System.out.println("You rolled TWO TRIPLES! \n You've been awarded 2500 points! \n You've been given a new set of six dice to continue rolling for this turn.");
+
+                        System.out.println("You rolled TWO TRIPLES!\nYou've been awarded 2500 points!");
                         turnPoints += 2500;
                         tookDice = true;
-                        continueRolling = continueTurn();
-                        if(!continueRolling){
-                            totalPoints += turnPoints;
-                            System.out.println("Points earned this turn: " + turnPoints + ".\nTotal Points: " + totalPoints + ".\nEnding turn...");
-                            Thread.sleep(1000);
-                            break;
-                        }
+                        scorableDice.clear();
+
                     } else if(sixKind){
-                        System.out.println("You rolled TWO TRIPLES! \n You've been awarded 2500 points! \n You've been given a new set of six dice to continue rolling for this turn.");
-                        turnPoints += 2500;
+
+                        System.out.println("You rolled SIX OF A KIND!\nYou've been awarded 3000 points!");
+                        turnPoints += 3000;
                         tookDice = true;
-                        continueRolling = continueTurn();
-                        if(!continueRolling){
-                            totalPoints += turnPoints;
-                            System.out.println("Points earned this turn: " + turnPoints + ".\nTotal Points: " + totalPoints + ".\nEnding turn...");
-                            Thread.sleep(1000);
-                            break;
-                        }
+                        scorableDice.clear();
+
+                    } else if(fourKindWithPair) {
+
+                        System.out.println("You rolled FOUR OF A KIND WITH A PAIR!\nYou've been awarded 2000 points!");
+                        turnPoints += 2000;
+                        tookDice = true;
+                        scorableDice.clear();
+
                     } else {
 
                         boolean fiveKind = hand.checkFiveKind(scorableDice);
@@ -126,63 +124,69 @@ public class Game {
 
                         while((scorableDice.size() > 0) && ((scorableDice.get(0)[0] == 1) || (scorableDice.get(0)[0] == 5))){
 
-                            if(scorableDice.get(0)[0] == 1){
+                            if((scorableDice.size() > 0) && (scorableDice.get(0)[0] == 1)){
                                 System.out.println("You have " + scorableDice.get(0)[1] + " ONES you can take.");
-                                int diceCounter = scorableDice.get(0)[1];
-                                for(int i = 0; i < diceCounter; i++){
-                                    System.out.println("One's remaining: " + scorableDice.get(0)[1] + ".\nA One gives 100 Points.");
+                                for(int diceCounter = scorableDice.get(0)[1]; diceCounter != 0; diceCounter--){
+                                    System.out.println("One's remaining: " + diceCounter + ".\nA One gives 100 Points.");
                                     boolean takeDice = takeDiceInquiry();
                                     if(takeDice){
                                         turnPoints += 100;
                                         tookDice = true;
                                         hand.removeDice();
                                     }
-                                    scorableDice.get(0)[1] -= 1;
                                 }
                                 scorableDice.remove(0);
                             }
 
-                            if(scorableDice.get(0)[0] == 5){
+                            if((scorableDice.size() > 0) && (scorableDice.get(0)[0] == 5)){
                                 System.out.println("You have " + scorableDice.get(0)[1] + " FIVES you can take.");
-                                int diceCounter = scorableDice.get(0)[1];
-                                for(int i = 0; i < diceCounter; i++){
-                                    System.out.println("Five's remaining: " + scorableDice.get(0)[1] + ".\nA Five gives 50 Points.");
+                                for(int diceCounter = scorableDice.get(0)[1]; diceCounter != 0; diceCounter--){
+                                    System.out.println("Five's remaining: " + diceCounter + ".\nA Five gives 50 Points.");
                                     boolean takeDice = takeDiceInquiry();
                                     if(takeDice){
                                         turnPoints += 50;
                                         tookDice = true;
                                         hand.removeDice();
                                     }
-                                    scorableDice.get(0)[1] -= 1;
                                 }
                                 scorableDice.remove(0);
                             }
 
                         }
 
-                        if(hand.getHandSize() == 0){
+                        if((hand.getHandSize() == 0) && tookDice){
                             hand.fillHand();
                             System.out.println("You've scored points with all 6 dice. You've been given a new set of 6 dice to continue rolling for this turn!");
                         }
 
-                        System.out.println("You have scored a total of " + turnPoints + " for this turn.\nYou have " + (hand.getHandSize()+1) + " dice remaining in your hand.");
-                        continueRolling = continueTurn();
-
-                        if(!continueRolling){
-                            totalPoints += turnPoints;
-                            System.out.println("Points earned this turn: " + turnPoints + ".\nTotal Points: " + totalPoints + ".\nEnding turn...");
-                            Thread.sleep(1000);
-                            break;
-                        }
-
                     }
 
-
+                    if(!tookDice){
+                        System.out.println("You must score some amount of points each time you roll. Please choose dice to score points with.");
+                        scorableDice = ScorableDiceCreator.createArrayList(hand);
+                    }
 
                 }
+
+                if((hand.getHandSize() == 0) && tookDice){
+                    hand.fillHand();
+                    System.out.println("You've scored points with all 6 dice. You've been given a new set of 6 dice to continue rolling for this turn!");
+                }
+
+                System.out.println("You have scored a total of " + turnPoints + " for this turn.\nYou have " + hand.getHandSize() + " dice remaining in your hand.");
+                continueRolling = continueTurn();
+
+                if(!continueRolling){
+                    totalPoints += turnPoints;
+                    System.out.println("Points earned this turn: " + turnPoints + ".\nTotal Points: " + totalPoints + ".\nEnding turn...");
+                    Thread.sleep(1000);
+                    break;
+                }
+
             } else {
-                System.out.println("You Farkled. No points awarded this turn.");
-                turnPoints = 0;
+            System.out.println("You Farkled. No points awarded this turn.");
+            turnPoints = 0;
+            farkleCounter++;
             }
 
         }
@@ -242,6 +246,18 @@ public class Game {
 
         return takeDice;
 
+    }
+
+    public int getTotalPoints(){
+        return totalPoints;
+    }
+
+    public int getTurnCounter(){
+        return turnCounter;
+    }
+
+    public int getFarkleCounter(){
+        return farkleCounter;
     }
 
 
