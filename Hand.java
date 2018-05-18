@@ -26,19 +26,19 @@ public class Hand {
         hand[3] = diceFour;
         hand[4] = diceFive;
         hand[5] = diceSix;
-        diceCount = 5;
+        diceCount = 6;
     }
 
     void removeDice(){
 
-        hand[diceCount] = null;
+        hand[diceCount-1] = null;
         diceCount--;
 
     }
 
     void rollHand(){
 
-        for(int i = 0; i <= diceCount; i++){
+        for(int i = 0; i <= diceCount-1; i++){
             hand[i].randomizeDice();
         }
 
@@ -47,7 +47,7 @@ public class Hand {
     void showHand(){
         System.out.println("You rolled: ");
         System.out.print("\r");
-        for(int i = 0; i <= diceCount; i++){
+        for(int i = 0; i <= diceCount-1; i++){
             System.out.print("\b");
             System.out.print("[" + hand[i].value + "]  ");
         }
@@ -68,7 +68,7 @@ public class Hand {
     }
 
     public Hand sortHand(Hand hand){
-        for(int i = 1; i < (diceCount+1); i++){
+        for(int i = 1; i < diceCount; i++){
             int marker = i;
             Dice currentDice = this.hand[i];
             int currentValue = this.hand[i].value;
