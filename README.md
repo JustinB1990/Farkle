@@ -352,7 +352,29 @@ I've figured out the errors in the loops. I've also cleaned up certain parts of 
 * I need to test every individual outcome that a user can roll. Rejecting all/some dice, and taking all dice to make sure everything works and functions properly.
 * I also still need to add a loop that makes sure that the user scores at least 500 points in order to get onto the scoreboard in the first place.
 
-I'll push and update the code on Git tomorrow(5/18)
-
 ---
+## FINISHING UP!
+
+I've completed the program to now be fully functional in the scope of the game and the games objectives.
+I've added the condition that makes sure the user scores at least 500 points to get on the scoreboard.
+I've tested the outcomes to make sure that anything that is supposed to score points, does.
+
+I'll have all of this uploaded tomorrow: 5/29.
+
+#### Project Additions:
+
+This project is finished, and for the most part, this particular project was more about finding a problem to solve, planning it out, and solving it. So it doesn't really use anything too complicated.
+
+Recently, I've been reading up and learning Multi-Threading, Dependency Injection, and Reflection - along with other various tools in Java and programming. I'm going to begin incorporating these things in this project to test and demonstrate their uses.
+This project will be sort of my *guinea pig* to more complicated areas of Java programming.
+
+I'm going to begin with multi-threading and move on to reflection afterwards.
+
+**To do for tomorrow:**
+* Push all recent code up to master branch.
+* Update read-me to be more organized.
+* Test out multi-threading.
+* Test out reflection if there's time.
+
+*Updates coming soon!*
  
