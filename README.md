@@ -7,7 +7,7 @@ This project will simulate playing a game of Farkle.
 
 **If you would rather watch a how-to video, I found a decent one [here](https://www.youtube.com/watch?v=PtZlur9Kmb8)**
 <details>
-  <summary> <b>Written Game Explaination</b> </summary>
+  <summary> <h2>Written Game Explaination</h2> </summary>
   <br>
     Farkle is a turn based gambling game between two or more players that uses six dice.
     Score is kept track from a person's Total Score, and a running score for an individual turn.<br>
@@ -53,9 +53,10 @@ This project will simulate playing a game of Farkle.
     </details>
 
 ---
-
-### Designing the Game
-
+<details>
+  <summary><h2>Designing the Game</h2></summary>
+  
+  <br>
 I'm going to begin by designing this game for a single player who will play through a single game of Farkle on their own,
 taking turns until they reach 10,000 points. *Then* I will think about adding in a computer for the player to play against.
 
@@ -359,19 +360,18 @@ I've completed the program to now be fully functional in the scope of the game a
 I've added the condition that makes sure the user scores at least 500 points to get on the scoreboard.
 I've tested the outcomes to make sure that anything that is supposed to score points, does.
 
-#### Project Additions:
-
 This project is finished, and for the most part, this particular project was more about finding a problem to solve, planning it out, and solving it. So it doesn't really use anything too complicated.
 
-Recently, I've been reading up and learning Multi-Threading, Dependency Injection, and Reflection - along with other various tools in Java and programming. I'm going to begin incorporating these things in this project to test and demonstrate their uses.
-This project will be sort of my *guinea pig* to more complicated areas of Java programming.
-
-I'm going to begin with multi-threading and move on to reflection afterwards.
-
 **Finalized Code has been uploaded.**
+</details>
 
 ---
 ## Testing new things in Java!
+
+Recently, I've been reading up and learning Multi-Threading, Dependency Injection, and Reflection - along with other various tools in Java and programming. I'm going to begin incorporating these things in this project to test and demonstrate their uses.
+This project will sort of be my *guinea pig* to more complicated areas of Java programming.
+
+I'm going to begin with multi-threading and move on to reflection afterwards.
 
 *Updates Coming Soon!*
  
