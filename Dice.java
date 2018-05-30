@@ -1,6 +1,6 @@
 package com.company;
 
-class Dice {
+class Dice implements Runnable {
 
     int value;
 
@@ -8,6 +8,10 @@ class Dice {
 
         this.value = (int) ((Math.random() * 6) + 1);
 
+    }
+
+    public void run(){
+        randomizeDice();
     }
 
 }
