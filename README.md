@@ -373,5 +373,8 @@ This project will sort of be my *guinea pig* to more complicated areas of Java p
 
 I'm going to begin with multi-threading and move on to reflection afterwards.
 
-*Updates Coming Soon!*
+---
+### Multi-Threading
+**5/30/2018 - 1:50PM**
+I've just uploaded basic Multi-threading: Implementing `Runnable` on my `Dice` class while using `ExecutorService` on `rollHand` in the `Hand` class to submit Threads into a Thread Pool.
  
