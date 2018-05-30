@@ -2,10 +2,10 @@ package com.company;
 
 import java.util.ArrayList;
 
-public class Hand {
+class Hand {
 
     private Dice [] hand;
-    int diceCount;
+    private int diceCount;
     private Dice diceOne = new Dice();
     private Dice diceTwo = new Dice();
     private Dice diceThree = new Dice();
@@ -67,7 +67,7 @@ public class Hand {
 
     }
 
-    public Hand sortHand(Hand hand){
+    Hand sortHand(Hand hand){
         for(int i = 1; i < diceCount; i++){
             int marker = i;
             Dice currentDice = this.hand[i];
@@ -84,7 +84,7 @@ public class Hand {
         return hand;
     }
 
-    public boolean checkEmptyHand(ArrayList<int[]> scorableDice){
+    boolean checkEmptyHand(ArrayList<int[]> scorableDice){
 
         boolean emptyHand = false;
         if(scorableDice.size() == 0){
@@ -95,7 +95,7 @@ public class Hand {
 
     }
 
-    public boolean checkStraight(ArrayList<int[]> scorableDice){
+    boolean checkStraight(ArrayList<int[]> scorableDice){
 
         boolean straight = false;
         if(scorableDice.size() == 6){
@@ -106,7 +106,7 @@ public class Hand {
 
     }
 
-    public boolean checkThreePair(ArrayList<int[]> scorableDice){
+    boolean checkThreePair(ArrayList<int[]> scorableDice){
 
         boolean threePair = false;
         if(scorableDice.size() == 3){
@@ -118,7 +118,7 @@ public class Hand {
         return threePair;
     }
 
-    public boolean checkTwoTriples(ArrayList<int[]> scorableDice){
+    boolean checkTwoTriples(ArrayList<int[]> scorableDice){
 
         boolean twoTriples = false;
         if(scorableDice.size() == 2){
@@ -131,7 +131,7 @@ public class Hand {
 
     }
 
-    public boolean checkFourKindWithPair(ArrayList<int[]> scorableDice){
+    boolean checkFourKindWithPair(ArrayList<int[]> scorableDice){
 
         boolean fourKindWithPair = false;
         if(scorableDice.size() == 2){
@@ -143,7 +143,7 @@ public class Hand {
         return fourKindWithPair;
     }
 
-    public boolean checkSixKind(ArrayList<int[]> scorableDice){
+    boolean checkSixKind(ArrayList<int[]> scorableDice){
 
         boolean sixKind = false;
         if(scorableDice.get(0)[1] == 6){
@@ -154,7 +154,7 @@ public class Hand {
 
     }
 
-    public boolean checkFiveKind(ArrayList<int[]> scorableDice){
+    boolean checkFiveKind(ArrayList<int[]> scorableDice){
 
         boolean fiveKind = false;
         if(scorableDice.size() > 0){
@@ -167,7 +167,7 @@ public class Hand {
 
     }
 
-    public boolean checkFourKind(ArrayList<int[]> scorableDice){
+    boolean checkFourKind(ArrayList<int[]> scorableDice){
 
         boolean fourKind = false;
         if(scorableDice.size() > 0){
@@ -180,7 +180,7 @@ public class Hand {
 
     }
 
-    public boolean checkThreeKind(ArrayList<int[]> scorableDice){
+    boolean checkThreeKind(ArrayList<int[]> scorableDice){
 
         boolean threeKind = false;
         if(scorableDice.size() > 0){
