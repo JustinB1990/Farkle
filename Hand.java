@@ -1,6 +1,9 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 class Hand {
 
@@ -38,8 +41,16 @@ class Hand {
 
     void rollHand(){
 
+        ExecutorService es = Executors.newFixedThreadPool(3);
         for(int i = 0; i <= diceCount-1; i++){
-            hand[i].randomizeDice();
+            es.submit(hand[i]);
+        }
+
+        try {
+            es.shutdown();
+            es.awaitTermination(5, TimeUnit.SECONDS);
+        } catch(Exception e){
+            System.out.println("-Error with ES-");
         }
 
     }
