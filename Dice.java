@@ -1,10 +1,10 @@
 package com.company;
 
-public class Dice {
+class Dice {
 
     int value;
 
-    public void randomizeDice(){
+    void randomizeDice(){
 
         this.value = (int) ((Math.random() * 6) + 1);
 
