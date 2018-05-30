@@ -3,9 +3,9 @@ package com.company;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class ScorableDiceCreator {
+class ScorableDiceCreator {
 
-    public static ArrayList<int[]> createArrayList(Hand hand){
+    static ArrayList<int[]> createArrayList(Hand hand){
 
         int[][] results = new int[hand.getHandSize() + 1][2];
         int[] handValues = new int[hand.getHandSize() + 1];
@@ -16,16 +16,16 @@ public class ScorableDiceCreator {
             handValues[i] = hand.getDiceValue(i);
         }
 
-        for(int i = 0; i < possibleOutcomes.length; i++){
+        for (int possibleOutcome : possibleOutcomes) {
             int counter = 0;
-            for(int j = 0; j < hand.getHandSize() + 1; j++){
-                if(hand.getDiceValue(j) == possibleOutcomes[i]){
+            for (int j = 0; j < hand.getHandSize(); j++) {
+                if (hand.getDiceValue(j) == possibleOutcome) {
                     counter++;
                 }
             }
 
-            if(counter > 0){
-                results[arrayTracker][0] = possibleOutcomes[i];
+            if (counter > 0) {
+                results[arrayTracker][0] = possibleOutcome;
                 results[arrayTracker][1] = counter;
                 arrayTracker++;
             }
@@ -115,7 +115,7 @@ public class ScorableDiceCreator {
 
 //Sorts the multi-dimensional array putting highest quantities first.
 
-    public static int[][] orderMultiDimArray(int[][] multiDimArray){
+    private static int[][] orderMultiDimArray(int[][] multiDimArray){
         for(int i=1; i<=multiDimArray.length -1; i++){
             int marker = i;
             int[] currentArray = new int[2];
