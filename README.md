@@ -359,7 +359,7 @@ I've completed the program to now be fully functional in the scope of the game a
 I've added the condition that makes sure the user scores at least 500 points to get on the scoreboard.
 I've tested the outcomes to make sure that anything that is supposed to score points, does.
 
-I'll have all of this uploaded tomorrow: 5/29.
+I'll have this uploaded later.
 
 #### Project Additions:
 
