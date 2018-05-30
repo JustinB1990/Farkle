@@ -359,8 +359,6 @@ I've completed the program to now be fully functional in the scope of the game a
 I've added the condition that makes sure the user scores at least 500 points to get on the scoreboard.
 I've tested the outcomes to make sure that anything that is supposed to score points, does.
 
-I'll have this uploaded later.
-
 #### Project Additions:
 
 This project is finished, and for the most part, this particular project was more about finding a problem to solve, planning it out, and solving it. So it doesn't really use anything too complicated.
@@ -370,11 +368,10 @@ This project will be sort of my *guinea pig* to more complicated areas of Java p
 
 I'm going to begin with multi-threading and move on to reflection afterwards.
 
-**To do for tomorrow:**
-* Push all recent code up to master branch.
-* Update read-me to be more organized.
-* Test out multi-threading.
-* Test out reflection if there's time.
+**Finalized Code has been uploaded.**
 
-*Updates coming soon!*
+---
+## Testing new things in Java!
+
+*Updates Coming Soon!*
  
